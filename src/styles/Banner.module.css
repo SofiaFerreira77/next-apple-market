@@ -1,0 +1,19 @@
+.Banner {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 70vh;
+    margin: 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-white);
+}
+
+.Banner a {
+    text-decoration: none;
+    color: var(--color-white);
+    font-size: 18px;
+}

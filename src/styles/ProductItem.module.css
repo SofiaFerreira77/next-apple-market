@@ -1,0 +1,27 @@
+.Product {
+    display: block;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px #ccc;
+    -webkit-transition: .2s ease-in;
+    -moz-transition: .2s ease-in;
+    -o-transition: .2s ease-in;
+    transition: .2s ease-in;
+}
+
+.Product:hover {
+    -webkit-transform: translateY(-1em);
+    -moz-transform: translateY(-1em);
+    -o-transform: translateY(-1em);
+    -ms-transform: translateY(-1em);
+    transform: translateY(-1em);
+}
+
+.Product img {
+    max-height: 200px;
+}
