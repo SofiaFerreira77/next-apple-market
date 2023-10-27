@@ -1,6 +1,4 @@
-import React from "react";
-
-const About = props => {
+export default function About () {
   return (
     <main className="About">
       <div className="container">
@@ -20,5 +18,3 @@ const About = props => {
     </main>
   )
 }
-
-export default About

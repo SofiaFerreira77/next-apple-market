@@ -1,4 +1,4 @@
-import styles from '../../styles/Header.module.css'
+import styles from '@/styles/Header.module.css'
 import { Bag, Logo, Search } from './Icons'
 
 export default function Header() {

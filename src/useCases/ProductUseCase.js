@@ -1,4 +1,4 @@
-import { getProductById, getProductsList } from "../repositories/ProductFakeRepository";
+import { getProductById, getProductsList } from "@/repositories/ProductFakeRepository";
 
 export async function getProductsCase() {
     const products = await getProductsList();

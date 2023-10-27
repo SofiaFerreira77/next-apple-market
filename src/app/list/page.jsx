@@ -2,7 +2,7 @@
 import List from "@/components/ProductList";
 import Banner from "@/components/Banner";
 
-const ListPage = props => {
+export default function ListPage() {
   return (
     <main className="List">
       {/* <Refinements /> */}
@@ -19,5 +19,3 @@ const ListPage = props => {
     </main>
   )
 }
-
-export default ListPage

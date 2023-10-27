@@ -1,10 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { isArrayEmpty } from "../utils/Utils"
-import styles from '../styles/ProductList.module.css'
+import { isArrayEmpty } from "@/utils/Utils"
+import styles from '@/styles/ProductList.module.css'
 import ProductItem from "./ProductItem"
-import { getProductsCase } from "../useCases/ProductUseCase";
+import { getProductsCase } from "@/useCases/ProductUseCase";
 
 export default function List() {
     const [products, setProducts] = useState([]);
