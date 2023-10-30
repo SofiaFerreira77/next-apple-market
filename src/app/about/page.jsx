@@ -1,8 +1,10 @@
+import Heading from "@/components/shared/Heading";
+
 export default function About () {
   return (
     <main className="About">
       <div className="container">
-        <h1>About Page</h1>
+        <Heading title="About page" />
         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in ornare metus. Quisque at finibus lectus, sed congue nulla. 
           Praesent condimentum, leo ac fringilla faucibus, sapien lacus commodo nisi, sit amet mollis lorem ligula quis tellus. 
           <br /><br />
