@@ -1,12 +1,12 @@
 import { getProductById, getProductsList } from "@/repositories/ProductFakeRepository";
 
-export async function getProductsCase() {
+export async function getProductsCase(): Promise<Product[]> {
     const products = await getProductsList();
     const productsList = products ? Object.values(products) : [];
-    return productsList;
+    return productsList as Product[];
 }
 
-export async function getProductCase(productId) {
+export async function getProductByIdCase(productId: number): Promise<Product> {
     const product = await getProductById(productId);
-    return product;
+    return product as Product;
 }
