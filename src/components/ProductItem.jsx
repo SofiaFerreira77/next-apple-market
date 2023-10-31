@@ -5,7 +5,7 @@ import styles from '@/styles/ProductItem.module.css'
 
 export default function ProductItem({ product }) {
     return (
-        <Link href={'detail/' + product.id} className={styles.Product}>
+        <Link href={'../detail/' + product.id} className={styles.Product}>
             <Image src={product.image} alt={product.title}
                 width={300} height={300} style={{ width: "auto", height: "auto" }} loading="lazy" />
             

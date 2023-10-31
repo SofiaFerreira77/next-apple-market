@@ -1,4 +1,17 @@
-import { getProductById, getProductsList } from "@/repositories/ProductFakeRepository";
+import { getCategoriesList, getProductsByCategory, getProductsList, getProductById } from "@/repositories/ProductFakeRepository";
+
+
+export async function getCategoriesListCase(): Promise<Category[]> {
+    const categories = await getCategoriesList();
+    const categoryList = categories ? Object.values(categories) : [];
+    return categoryList as Category[];
+}
+
+export async function getProductsByCategoryCase(categoryId: string): Promise<Product[]> {
+    const products = await getProductsByCategory(categoryId);
+    const productsList = products ? Object.values(products) : [];
+    return products as Product[];
+}
 
 export async function getProductsCase(): Promise<Product[]> {
     const products = await getProductsList();

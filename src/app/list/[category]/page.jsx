@@ -1,11 +1,13 @@
-import { getCategoriesListCase, getProductsCase } from "@/useCases/ProductUseCase";
+import { getCategoriesListCase, getProductsByCategoryCase } from "@/useCases/ProductUseCase";
 import List from "@/components/ProductList";
 import Refinements from "@/components/ProductRefinements";
 import Banner from "@/components/Banner";
 
-export default function ListPage() {
+export default function CategoryPage({ params }) {
+  const { category } = params;
+
   const showRefinements = getCategoriesListCase().then((categories) => <Refinements categories={categories} />);
-  const showFeaturedProducts = getProductsCase().then((products) => <List products={products} />);
+  const showFeaturedProducts = getProductsByCategoryCase(category).then((products) => <List products={products} />);
 
   return (
     <main className="List">
