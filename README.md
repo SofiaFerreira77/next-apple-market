@@ -14,9 +14,9 @@ This project is an e-commerce exercise with React, Nextjs and Typescript for lea
 - [x] Basic Layout with Header and Footer
 - [x] Homepage with Banner and listing the featured products
 - [x] Listing all products - grid layout
-- [x] Sorting in list view (Sort by price)
-- [x] Possibility to add/remove from wishlist
-- [x] Detailed view of Product
+- [ ] Sorting in list view (Sort by price)
+- [ ] Detailed view of Product - add to Cart
+- [ ] Shopping Cart
 
 ## Architecture
 Clean architecture
@@ -40,9 +40,9 @@ npm run dev
 
 # Next Steps
 The concepts of Clean Architecture, SOLID and Functional Programming are reviewed. Next steps:
-
 - [ ] Typescript
 - [ ] Server Side Rendering / Static Site Generation
 - [ ] Internationalization
 - [ ] API with another methods ( Firebase ie. )
 - [ ] State management
+- [ ] Possibility to add/remove from wishlist

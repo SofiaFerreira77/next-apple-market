@@ -6,4 +6,13 @@ const dumpLogs = (message) => {
     console.log(message)
 }
 
-export {isArrayEmpty, dumpLogs}
+const formatPrice = (price, localeString = 'pt-PT') => {
+    const formattedPrice = price.toLocaleString( localeString, {
+        style: 'currency',
+        currency: 'EUR'
+    });
+
+    return formattedPrice;
+}
+
+export {isArrayEmpty, dumpLogs, formatPrice}

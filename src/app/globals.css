@@ -34,6 +34,14 @@ ul {
   padding: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+
 a {
   text-decoration: none;
   color: var(--color-grey-dark2);
@@ -48,10 +56,31 @@ img {
   display: block;
 }
 
+/* Typography */
+
+.text-white {
+  color: var(--color-white);
+}
+
+.text-black {
+  color: var(--color-grey-dark2);
+}
+
+.ribbon-1 {
+  font-size: .8em;
+  color: #bf4800;
+}
+
+.price {
+  font-weight: 600;
+}
+
+
+/* Containers */
 main {
   position: relative;
   width: 100%;
-  padding: 0 10px;
+  padding: 20px 10px;
 }
 
 .container {
@@ -60,15 +89,27 @@ main {
 }
 
 @media only screen and (max-width:1023px) and (max-device-width:736px) {
- .container {
+  .container {
     max-width: 100%
   }
 }
 
-.text-white {
-  color: var(--color-white);
+.flex {
+  display: flex;
 }
 
-.text-black {
-  color: var(--color-grey-dark2);
+.gap {
+  gap: 1rem;
+}
+
+.gap-1 {
+  gap: 3rem;
+}
+
+.gap-2 {
+  gap: 6rem;
+}
+
+.sticky {
+  display: sticky;
 }
