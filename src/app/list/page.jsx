@@ -1,12 +1,16 @@
-/* import Refinements from "../components/ProductRefinements"; */
+import { getProductsCase } from "@/useCases/ProductUseCase";
 import List from "@/components/ProductList";
+/* import Refinements from "../components/ProductRefinements"; */
 import Banner from "@/components/Banner";
 
 export default function ListPage() {
+
+  const showFeaturedProducts = getProductsCase().then((products) => <List products={products} />);
+
   return (
     <main className="List">
       {/* <Refinements /> */}
-      <List />
+      {showFeaturedProducts}
 
       <div className="container">
         <Banner darkText={true}

@@ -16,3 +16,7 @@ type ProductProps = {
         productId: number
     }
 }
+
+type typeProducts = {
+    products: Product[]
+}
