@@ -59,11 +59,11 @@ img {
 /* Typography */
 
 .text-white {
-  color: var(--color-white);
+  color: var(--color-white) !important;
 }
 
 .text-black {
-  color: var(--color-grey-dark2);
+  color: var(--color-grey-dark2) !important;
 }
 
 .ribbon-1 {
@@ -94,8 +94,17 @@ main {
   }
 }
 
+
+.sticky {
+  display: sticky;
+}
+
 .flex {
   display: flex;
+}
+
+.grid {
+  display: grid;
 }
 
 .gap {
@@ -110,6 +119,7 @@ main {
   gap: 6rem;
 }
 
-.sticky {
-  display: sticky;
+
+.justify-center {
+  justify-content: center;
 }
