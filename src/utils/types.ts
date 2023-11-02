@@ -11,7 +11,7 @@ type Product = {
     }
 }
 
-type Category = [ string ]
+type Category = string
 
 type ProductProps = {
     params: {
@@ -22,3 +22,16 @@ type ProductProps = {
 type typeProducts = {
     products: Product[]
 }
+
+type typeCategories = Category[]
+
+type SortingRules = [
+    {
+        rule: 'asc',
+        text: 'Ascending'
+    },
+    {
+        rule: 'desc',
+        text: 'Descending'
+    }
+]
