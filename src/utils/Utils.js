@@ -2,10 +2,6 @@ const isArrayEmpty = (arr) => {
     return arr === undefined && arr === null && arr.length <= 0
 }
 
-const dumpLogs = (message) => {
-    console.log(message)
-}
-
 const formatPrice = (price, localeString = 'pt-PT') => {
     const formattedPrice = price.toLocaleString( localeString, {
         style: 'currency',
@@ -15,4 +11,4 @@ const formatPrice = (price, localeString = 'pt-PT') => {
     return formattedPrice;
 }
 
-export {isArrayEmpty, dumpLogs, formatPrice}
+export {isArrayEmpty, formatPrice}
