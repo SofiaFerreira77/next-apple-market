@@ -1,20 +1,18 @@
+import { getCategoriesListCase } from "@/useCases/ProductUseCase";
 import Link from "next/link"
 
-export default function Refinements({ categories }: { categories: typeCategories }) {
-
-    const showCategories = categories?.map((category) => <li key={category}><Link href={'../list/' + category}>{category}</Link></li>);
+export default function Refinements() {
+    const showCategories = getCategoriesListCase().then(categories =>
+        categories.map((category) => <li key={category.id}><Link href={'../list/' + category.slug}>{category.name}</Link></li>)
+    )
 
     return (
         <>
-            {categories ?
-                <nav aria-label="Filter By">
-                    <ul className="flex gap justify-center">
-                        {showCategories}
-                    </ul>
-                </nav>
-                :
-                ''
-            }
+            <nav aria-label="Filter By">
+                <ul className="flex gap justify-center">
+                    {showCategories}
+                </ul>
+            </nav>
         </>
     )
 }

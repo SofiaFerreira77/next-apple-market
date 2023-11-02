@@ -38,9 +38,9 @@ export async function getCategoriesList(): Promise<Category[]> {
     }
 }
 
-export async function getProductsByCategory(categoryId: string): Promise<Product[]> {
+export async function getProductsByCategory(categoryName: string): Promise<Product[]> {
     try {
-        const response = await fetch(`${BASE_URL}/products/category/${categoryId}`);
+        const response = await fetch(`${BASE_URL}/products/category/${categoryName}`);
         if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
         return data as Product[];

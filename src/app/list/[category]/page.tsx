@@ -1,12 +1,11 @@
 import { getCategoriesListCase, getProductsByCategoryCase } from "@/useCases/ProductUseCase";
 import List from "@/components/ProductList";
-import Refinements from "@/components/ProductRefinements";
 
 export async function generateMetadata({ params }) {
   const { category } = params;
 
   return {
-    title: category,
+    title: 'Category: ' + category,
     description: category,
   };
 }
@@ -14,12 +13,12 @@ export async function generateMetadata({ params }) {
 export default function CategoryPage({ params }) {
   const { category } = params;
 
-  const showRefinements = getCategoriesListCase().then((categories) => <Refinements categories={categories} />);
-  const showFeaturedProducts = getProductsByCategoryCase(category).then((products) => <List products={products} />);
+  const showFeaturedProducts = getCategoriesListCase().then((categories) =>
+     getProductsByCategoryCase(categories, category).then((products) => <List products={products} />)
+  ); 
 
   return (
     <>
-      {showRefinements}
       {showFeaturedProducts}
     </>
   )

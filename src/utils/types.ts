@@ -11,7 +11,11 @@ type Product = {
     }
 }
 
-type Category = string
+type Category = {
+    id: number,
+    name: string,
+    slug: string
+}
 
 type ProductProps = {
     params: {

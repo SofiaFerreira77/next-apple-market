@@ -1,16 +1,18 @@
 import { getCategoriesList, getProductsByCategory, getProductsList, getProductById } from "@/repositories/ProductFakeRepository";
-
+import useSlugify from "@/hooks/useSlugify";
 
 export async function getCategoriesListCase(): Promise<Category[]> {
-    const categories = await getCategoriesList();
-    const categoryList = categories ? Object.values(categories) : [];
-    return categoryList as Category[];
+    const categoriesData = await getCategoriesList();
+    const categories = [];
+    categoriesData ? categoriesData.map((category, index) => categories.push({ "id": index, "name": category, "slug": useSlugify(category)})) : []
+    return categories as Category[];
 }
 
-export async function getProductsByCategoryCase(categoryId: string): Promise<Product[]> {
-    const products = await getProductsByCategory(categoryId);
+export async function getProductsByCategoryCase(categories: Category[], categorySlug: string): Promise<Product[]> {
+    const selectedCategory = categories.filter((category) => category.slug === categorySlug)
+    const products = await getProductsByCategory(selectedCategory[0].name);
     const productsList = products ? Object.values(products) : [];
-    return products as Product[];
+    return productsList as Product[];
 }
 
 export async function getProductsCase(): Promise<Product[]> {
