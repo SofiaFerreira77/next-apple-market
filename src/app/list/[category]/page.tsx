@@ -1,4 +1,4 @@
-import { getCategoriesListCase, getProductsByCategoryCase } from "@/useCases/ProductUseCase";
+import { getProductsByCategoryCase } from "@/useCases/ProductUseCase";
 import List from "@/components/ProductList";
 
 export async function generateMetadata({ params }) {
@@ -13,9 +13,7 @@ export async function generateMetadata({ params }) {
 export default function CategoryPage({ params }) {
   const { category } = params;
 
-  const showFeaturedProducts = getCategoriesListCase().then((categories) =>
-     getProductsByCategoryCase(categories, category).then((products) => <List products={products} />)
-  ); 
+  const showFeaturedProducts = getProductsByCategoryCase(category).then((products) => <List products={products} />);
 
   return (
     <>
