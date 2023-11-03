@@ -12,9 +12,9 @@ type Product = {
 }
 
 type Category = {
-    id: number,
-    name: string,
-    slug: string
+    id: number;
+    name: string;
+    slug: string;
 }
 
 type ProductProps = {
@@ -39,3 +39,20 @@ type SortingRules = [
         text: 'Descending'
     }
 ]
+
+type Cart = {
+    id: number;
+    userId: number;
+    date: string;
+    products: CartProduct[];
+}
+
+type CartProduct = {
+    id: number;
+    productId: number;
+    quantity: number;
+    title: string;
+    price: number;
+    category: string;
+    image: string;
+}

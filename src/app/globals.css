@@ -10,6 +10,7 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 html,
@@ -107,6 +108,8 @@ main {
   display: grid;
 }
 
+
+
 .gap {
   gap: 1rem;
 }
@@ -120,6 +123,18 @@ main {
 }
 
 
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
 .justify-center {
   justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
