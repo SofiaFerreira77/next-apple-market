@@ -44,3 +44,33 @@
     flex-direction: row;
     gap: 30px;
 }
+
+.HeaderContainer button {
+    border: none;
+    outline: 0;
+    background-color: transparent;
+}
+
+.SearchOverlay {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-white);    
+}
+
+.SearchOverlay input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--color-white);
+    color: var(--color-white);
+    font-size: 2em;
+    text-align: center;
+}

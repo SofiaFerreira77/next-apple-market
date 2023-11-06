@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import styles from '@/styles/Header.module.css'
-import { Bag, Logo, Search } from './Icons'
+import { Bag, Logo } from './Icons'
+import Search from './Search'
 
 export default function Header() {
     return (
