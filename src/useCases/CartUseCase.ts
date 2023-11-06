@@ -1,5 +1,6 @@
 import { getCarts, removeFromCart } from "@/repositories/CartFakeRepository";
 import { getProductByIdCase } from "./ProductUseCase";
+import CartProduct from "@/components/CartProduct";
 
 /* export async function addToCartCase({ userId, productId, quantity }: { userId: string, productId: number, quantity: number }) {
     postAddToCart(userId, productId, quantity);
@@ -8,9 +9,9 @@ import { getProductByIdCase } from "./ProductUseCase";
     return productsList as Product[];
 }*/
 
-/* export async function removeFromCartCase(productId: number) {
+export async function removeFromCartCase(productId: number) {
     await removeFromCart(productId);
-}  */
+} 
 
 export async function getCartCase(cartId: number) {
     const cart = await getCarts(cartId);
@@ -25,11 +26,20 @@ export async function getCartCase(cartId: number) {
 
     products.forEach(product => {
         getProductByIdCase(product.productId)
-            .then(info => extendedCart.products.push(info))
+            .then((info) => {
+                const cartProduct: CartProduct = {
+                    id: info.id,
+                    productId : info.id,
+                    quantity: product.quantity,
+                    title: info.title,
+                    price: info.price,
+                    category: info.category,
+                    image: info.image
+                };
+                
+                extendedCart.products.push(cartProduct);
+            })
     });
-
-    console.log(extendedCart.products)
-    // TODO - product object without properties
 
     return extendedCart;
 }

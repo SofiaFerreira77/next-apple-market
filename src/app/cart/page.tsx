@@ -3,7 +3,7 @@ import CartList from '@/components/CartList'
 import Heading from '@/components/shared/Heading';
 
 export default async function Cart() {
-  const cart = await getCartCase(5);
+  const cart = await getCartCase(2);
 
   return (
     <section className='step1'>

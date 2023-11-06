@@ -23,7 +23,7 @@ export default function CartProduct({ product }: { product: CartProduct }) {
                     <Link href={'../detail/' + product.id}>
                         <h3>{product.title}</h3>
                     </Link>
-                    {/* <p>{product.quantity}</p> */}
+                    <p>{product.quantity}</p>
                     <p className='price'>{formatPrice(product.price, 'en-US')}</p>
                     <p className='ribbon-1'>{product.category}</p>
                 </div>
