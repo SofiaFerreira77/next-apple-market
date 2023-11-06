@@ -1,10 +1,8 @@
-"use client"
-
 import { formatPrice } from '@/utils/Utils'
 import Image from 'next/image'
 import Link from 'next/link'
-import styles from '@/styles/ProductItem.module.css'
 import { removeFromCartCase } from '@/useCases/CartUseCase'
+import styles from '@/styles/ProductItem.module.css'
 
 export default function CartProduct({ product }: { product: CartProduct }) {
     function removeProduct(productId) {

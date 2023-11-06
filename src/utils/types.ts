@@ -45,6 +45,7 @@ type Cart = {
     userId: number;
     date: string;
     products: CartProduct[];
+    totals: typeTotals;
 }
 
 type CartProduct = {
@@ -55,4 +56,12 @@ type CartProduct = {
     price: number;
     category: string;
     image: string;
+}
+
+type typeTotals = {
+    quantity: number;
+    price: number;
+    taxes: number;
+    delivery: number;
+    totalPrice: number;
 }
