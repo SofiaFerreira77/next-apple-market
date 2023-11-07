@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import styles from '@/styles/Header.module.css'
-import { Bag, Logo } from './Icons'
+import { Logo } from './Icons'
 import Search from './Search'
+import BagComponent from '../BagComponent'
 
 export default function Header() {
     return (
@@ -21,7 +22,7 @@ export default function Header() {
 
                 <div className={styles.HeaderShopping}>
                     <Search />
-                    <Link href="../cart"><Bag /></Link>
+                    <BagComponent />
                 </div>
             </div>
         </header>
