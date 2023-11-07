@@ -43,8 +43,8 @@ export async function getCartCase(): Promise<Cart> {
         const info = await getProductByIdCase(product.productId);
 
         const cartProduct: CartProduct = {
-            id: info.id,
-            productId: info.id,
+            id: product.productId,
+            productId: product.id,
             quantity: product.quantity,
             title: info.title,
             price: info.price,

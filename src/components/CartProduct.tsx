@@ -2,7 +2,6 @@ import { formatPrice } from '@/utils/Utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import { removeFromCartCase } from '@/useCases/CartUseCase'
-import styles from '@/styles/ProductItem.module.css'
 
 export default function CartProduct({ product }: { product: CartProduct }) {
     function removeProduct(productId) {
@@ -26,7 +25,7 @@ export default function CartProduct({ product }: { product: CartProduct }) {
                     <p className='ribbon-1'>{product.category}</p>
                 </div>
             </div>
-            <button type='button' onClick={() => removeProduct(product.id)} aria-label={"Remove Product with id: "+product.id}>Remove</button>
+            <button type='button' onClick={() => removeProduct(product.productId)} aria-label={"Remove Product with id: "+product.id}>Remove</button>
         </div>
     )
 }
