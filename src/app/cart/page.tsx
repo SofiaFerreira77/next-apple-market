@@ -9,8 +9,6 @@ import CartTotals from '@/components/CartTotals';
 export default function Cart() {
   const [cart, setCart] = useState({
     id: 1,
-    userId: 1,
-    date: '',
     products: [],
     totals: {
       quantity: 0,
@@ -23,22 +21,19 @@ export default function Cart() {
 
   const [loading, setLoading] = useState(false);
 
-  async function fetchData() {
+  async function getCartInfo() {
     setLoading(true);
-    const cartData = await getCartCase(1);
 
-    try {
-      setCart(cartData);
-      setLoading(false);
-    } catch (error) {
-      console.error('Cart - Error fetching cart:', error);
-      // setCart()
-      setLoading(false);
-    }
+    getCartCase().then((response) => {
+      if (response) {
+        setCart(response);
+        setLoading(false);
+      }
+    });
   }
 
   useEffect(() => {
-    fetchData();
+    getCartInfo();
   }, [])
 
   return (
@@ -46,9 +41,8 @@ export default function Cart() {
       <div className='container'>
         {!loading && cart.totals.quantity > 0 ? 
           <>
-            <Heading title={'Shopping Cart: ' + cart.id} subtitle={'(' + cart.totals.quantity + ' products)'} />
+            <Heading title={'Shopping Cart'} subtitle={'(' + cart.totals.quantity + ' products)'} />
             <CartList products={cart.products} />
-            <p><strong>User {cart.userId}</strong> updated this cart at <strong>{cart.date}</strong></p>
             <CartTotals totals={cart.totals}/>
           </>
           :

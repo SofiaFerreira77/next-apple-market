@@ -1,24 +1,29 @@
-const BASE_URL = 'https://fakestoreapi.com';
+const BASE_URL = 'https://654916c9dd8ebcd4ab242aec.mockapi.io/api';
+import { deleteJsonData, getJsonData, postJsonData } from "@/utils/mutations";
 
-// Cart
+export async function addToCart(productId: number, quantity: number) {
+    const data = { "productId": productId, "quantity": Number(quantity) }
 
-export async function getCarts(cartId: number): Promise<Cart> {
-    try {
-        const response = await fetch(`${BASE_URL}/carts/${cartId}`);
-        if (!response.ok) throw new Error('Network response was not ok');
-        const data = await response.json();
-        return data as Cart;
-    } catch (error) {
-        console.error('Error fetching products:', error);
-        throw error;
-    }
-}
-
-
-export async function addToCart(productId: number) {
-    // Send the update to cart using a POST method
+    postJsonData({
+        data: data,
+        endPoint: `${BASE_URL}/products`,
+    })
 }
 
 export async function removeFromCart(productId: number) {
-    // Send the update to cart using a POST method
+    deleteJsonData({
+        endPoint: `${BASE_URL}/products/${productId}`
+    })
+}
+
+export async function getCart(): Promise<Cart> {
+    return getJsonData({
+        endPoint: `${BASE_URL}/cart/1`,
+    })
+}
+
+export async function getProducts(): Promise<CartProduct[]> {
+    return getJsonData({
+        endPoint: `${BASE_URL}/products`,
+    })
 }

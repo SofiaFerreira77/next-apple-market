@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getProductByIdCase, getProductsCase } from "@/useCases/ProductUseCase";
 import Image from "next/image";
 import Heading from "@/components/shared/Heading";
+import AddToCart from "@/components/AddToCart";
 
 export const dynamicParams = true;
 export const revalidate = 60 * 60;
@@ -40,6 +41,7 @@ export default async function Detail({ params }: ProductProps) {
         <div style={{ width: "50%"}}>
           <Heading title={product.title} subtitle={'Ref:'+product.id} />
           <p>{product.description}</p>
+          <AddToCart product={product.id}/>
         </div>
 
       </div>

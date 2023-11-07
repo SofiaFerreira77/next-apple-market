@@ -1,25 +1,47 @@
-import { getCarts, removeFromCart } from "@/repositories/CartFakeRepository";
+import { addToCart, getCart, getProducts, removeFromCart } from "@/repositories/CartFakeRepository";
 import { getProductByIdCase } from "./ProductUseCase";
-import CartProduct from "@/components/CartProduct";
 
-/* export async function addToCartCase({ userId, productId, quantity }: { userId: string, productId: number, quantity: number }) {
-    postAddToCart(userId, productId, quantity);
-    const products = await postAddToCart();
-    const productsList = products ? Object.values(products) : [];
-    return productsList as Product[];
-}*/
-
-export async function removeFromCartCase(productId: number) {
-    await removeFromCart(productId);
+export function addToCartCase({ productId, quantity }: { productId: number, quantity: number }) {
+    addToCart(productId, quantity);
 }
 
-export async function getCartCase(cartId: number): Promise<Cart> {
-    const cart = await getCarts(cartId);
-    const products = cart.products;
+export function removeFromCartCase(productId: number) {
+    removeFromCart(productId);
+}
+
+export async function getCartQuantityCase(): Promise<Number> {
+    const products = await getProducts();
+
+    // Use Promise.all to wait for all asynchronous calls to finish
+    const cartProductsPromises = products.map(async (product) => {
+        const cartProduct = {
+            quantity: product.quantity
+        };
+        return cartProduct;
+    });
+
+    // Wait for all promises to resolve
+    const cartProducts = await Promise.all(cartProductsPromises);
+
+    // Calculate totals
+    const totals = cartProducts.reduce((acc, product) => {
+        acc.quantity += product.quantity;
+        return acc;
+    }, {
+        quantity: 0
+    });
+
+    return totals.quantity
+}
+
+export async function getCartCase(): Promise<Cart> {
+    const cart = await getCart();
+    const products = await getProducts();
 
     // Use Promise.all to wait for all asynchronous calls to finish
     const cartProductsPromises = products.map(async (product) => {
         const info = await getProductByIdCase(product.productId);
+
         const cartProduct: CartProduct = {
             id: info.id,
             productId: info.id,
@@ -46,12 +68,10 @@ export async function getCartCase(cartId: number): Promise<Cart> {
     });
 
     // Handle the case where cart.totals is undefined
-    const cartTotals = cart.totals || { taxes: 0, delivery: 0 };
+    const cartTotals = cart.totals || { taxes: 5, delivery: 5 };
 
     const extendedCart: Cart = {
         id: cart.id,
-        userId: cart.userId,
-        date: cart.date,
         products: cartProducts,
         totals: {
             quantity: totals.quantity,
@@ -62,5 +82,6 @@ export async function getCartCase(cartId: number): Promise<Cart> {
         }
     };
 
+    console.log(extendedCart)
     return extendedCart;
 }

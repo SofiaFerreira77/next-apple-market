@@ -1,5 +1,6 @@
 type Product = {
     id: number;
+    productId: number;
     title: string;
     description: string;
     price: number;
@@ -42,8 +43,6 @@ type SortingRules = [
 
 type Cart = {
     id: number;
-    userId: number;
-    date: string;
     products: CartProduct[];
     totals: typeTotals;
 }
