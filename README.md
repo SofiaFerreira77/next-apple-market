@@ -6,17 +6,16 @@ This project is an e-commerce exercise with React, Nextjs and Typescript for lea
 ## Built with and Using
 - [x] [Nextjs](https://nextjs.org/) bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)
 - [x] [React](https://react.dev/)
-- [x] Localstorage - to save entries on the device
 - [x] [FakeStore API](https://fakestoreapi.com)
+- [x] [Mock API](https://mockapi.io) to develop Shopping Cart
 
 
 ## App features
 - [x] Basic Layout with Header and Footer
 - [x] Homepage with Banner and listing the featured products
 - [x] Listing all products - grid layout
-- [ ] Sorting in list view (Sort by price)
-- [ ] Detailed view of Product - add to Cart
-- [ ] Shopping Cart
+- [x] Detailed view of Product - add to Cart
+- [x] Shopping Cart
 - [x] Typescript
 - [x] Server Side Rendering / Static Site Generation
 
@@ -42,7 +41,7 @@ npm run dev
 
 # Next Steps
 The concepts of Clean Architecture, SOLID and Functional Programming are reviewed. Next steps:
+- [ ] State management with Zustand
+- [ ] Styling with [Emotion](https://emotion.sh) 
 - [ ] Internationalization
-- [ ] API with another methods ( Firebase ie. )
-- [ ] State management
 - [ ] Possibility to add/remove from wishlist

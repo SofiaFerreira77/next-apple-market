@@ -1,6 +1,35 @@
-import { formatPrice } from '@/utils/Utils'
+"use client"
 
-export default function CartTotals({ totals }) {
+import { getCartCase } from '@/useCases/CartUseCase';
+import { formatPrice } from '@/utils/Utils'
+import { useEffect, useState } from 'react';
+
+export default function CartTotals() {
+    const [totals, setTotals] = useState({
+        quantity: 0,
+        price: 0,
+        taxes: 5,
+        delivery: 5,
+        totalPrice: 0
+    });
+
+    const [loading, setLoading] = useState(false);
+
+    async function getCartInfo() {
+        setLoading(true);
+
+        getCartCase().then((response) => {
+            if (response) {
+                setTotals(response.totals);
+                setLoading(false);
+            }
+        });
+    }
+
+    useEffect(() => {
+        getCartInfo();
+    }, [])
+
     return (
         <section>
             {totals.quantity > 0 ?

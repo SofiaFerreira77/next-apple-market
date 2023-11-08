@@ -1,4 +1,11 @@
 import Heading from "@/components/shared/Heading";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "About Page"
+  };
+}
 
 export default function About () {
   return (
