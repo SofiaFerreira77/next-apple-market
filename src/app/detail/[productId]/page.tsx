@@ -7,19 +7,17 @@ import AddToCart from "@/components/AddToCart";
 export const dynamicParams = true;
 export const revalidate = 60 * 60;
 
-export async function generateStaticParams(): Promise<Product[]> {
+export async function generateStaticParams() {
   const products = await getProductsCase();
-  return products
+  const params = products ? products.map((product) => ({ productId: String(product.id)})) : [{ productId: '1' }, { productId: '2' }]
+  return params
 }
 
 export async function generateMetadata({ params }: ProductProps): Promise<Metadata> {
   const { productId } = params;
   const product = await getProductByIdCase(productId);
 
-  if (!product)
-    return {
-      title: "Product Not Found",
-    };
+  if (!product) return {title: "Product Not Found"};
 
   return {
     title: product.title,
