@@ -58,6 +58,15 @@ img {
   display: block;
 }
 
+input,
+button {
+  padding: 10px;
+}
+
+input:focus {
+  outline: none;
+}
+
 /* Typography */
 
 .text-white {
@@ -142,6 +151,10 @@ main {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
 }
 
 .text-right {

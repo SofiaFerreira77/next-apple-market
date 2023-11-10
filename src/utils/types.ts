@@ -50,7 +50,7 @@ type Cart = {
 type CartProduct = {
     id: number;
     productId: number;
-    quantity: number;
+    count: number;
     title: string;
     price: number;
     category: string;

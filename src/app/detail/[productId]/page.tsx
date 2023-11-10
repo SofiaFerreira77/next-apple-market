@@ -36,10 +36,10 @@ export default async function Detail({ params }: ProductProps) {
           { product.image ? <Image src={product.image} width={100} height={100} style={{ width: "100%", height: 'auto'}} alt={product.title} /> : ''}
         </div>
 
-        <div style={{ width: "50%"}}>
+        <div className="flex flex-col gap" style={{ width: "50%"}}>
           <Heading title={product.title} subtitle={'Ref:'+product.id} />
           <p>{product.description}</p>
-          <AddToCart product={product.id}/>
+          <AddToCart product={product}/>
         </div>
 
       </div>
