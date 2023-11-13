@@ -1,15 +1,7 @@
 import { addToCart, getCart, getProducts, removeFromCart } from "@/repositories/CartFakeRepository";
 import { getProductByIdCase } from "./ProductUseCase";
 
-export function addToCartCase({ productId, quantity }: { productId: number, quantity: number }) {
-    addToCart(productId, quantity);
-}
-
-export function removeFromCartCase(productId: number) {
-    removeFromCart(productId);
-}
-
-export async function getCartQuantityCase(): Promise<Number> {
+/* export async function getCartQuantityCase(): Promise<Number> {
     const products = await getProducts();
 
     // Use Promise.all to wait for all asynchronous calls to finish
@@ -32,9 +24,9 @@ export async function getCartQuantityCase(): Promise<Number> {
     });
 
     return totals.quantity
-}
+} */
 
-export async function getCartCase(): Promise<Cart> {
+/* export async function getCartCase(): Promise<Cart> {
     const cart = await getCart();
     const products = await getProducts();
 
@@ -45,7 +37,7 @@ export async function getCartCase(): Promise<Cart> {
         const cartProduct: CartProduct = {
             id: product.productId,
             productId: product.id,
-            quantity: product.quantity,
+            count: product.count,
             title: info.title,
             price: info.price,
             category: info.category,
@@ -82,6 +74,6 @@ export async function getCartCase(): Promise<Cart> {
         }
     };
 
-    console.log(extendedCart)
     return extendedCart;
 }
+ */
