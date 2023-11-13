@@ -23,9 +23,7 @@ export async function getCategoriesList(): Promise<Category[]> {
         endPoint: `${BASE_URL}/products/categories`
     })
 
-    const categories = [];
-    data ? data.map((category, index) => categories.push({ "id": index, "name": category, "slug": useSlugify(category) })) : [];
-    return categories as Category[];
+    return data?.map((category, index) => ({ "id": index, "name": category, "slug": useSlugify(category) })) ?? [];
 }
 
 export async function getProductsByCategory(categoryName: string): Promise<Product[]> {
