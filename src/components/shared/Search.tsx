@@ -10,8 +10,19 @@ export default function Search() {
     const [searchTerm, setSearchTerm] = useState("");
     const searchInput = useRef(null);
 
-    function getSearchResults(term: string) {
 
+    function hideOverlay() {
+        setInputVisible(false)
+    }
+
+    function showInput() {
+        setInputVisible(true)
+        setTimeout(() => setInputVisible(false), 4000);
+    }
+    
+
+    function getSearchResults(term: string) {
+        console.log(term)
     }
 
     useEffect(() => {
@@ -25,7 +36,7 @@ export default function Search() {
     return (
         <>
             <button type="button"
-                onClick={() => setInputVisible(true)}
+                onClick={() => showInput()}
                 aria-label="Toggle Favorites"><SearchIcon /></button>
 
             {inputVisible ?
@@ -34,7 +45,7 @@ export default function Search() {
             }
 
             {inputVisible && searchTerm.length > 3 ?
-                <div className={styles.SearchOverlay} onClick={() => setInputVisible(false)}>
+                <div className={styles.SearchOverlay} onClick={() => hideOverlay()}>
                     <input ref={searchInput} type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder='Search Here' />
                 </div>
                 :
