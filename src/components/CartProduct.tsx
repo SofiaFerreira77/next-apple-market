@@ -23,7 +23,7 @@ export default function CartProduct({ product, key }: { product: CartItem, key: 
                 </div>
             </div>
             <div className='flex align-center gap'>
-                <input type="number" value={product.count} onChange={(e) => handleUpdateCart(product, e.target.value)}/>
+                <input type="number" value={product.count} onChange={(e) => handleUpdateCart(product, Number(e.target.value))}/>
                 <button type='button' onClick={() => handleRemoveFromCart(product.productId, product.count)} aria-label={"Remove Product with id: " + product.id}>Remove</button>
             </div>
         </div>
