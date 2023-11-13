@@ -40,11 +40,12 @@ export const useCartStore = create<CartStore>((set, get) => ({
   },
   add: (product: Product, quantity: number) => {
     const { cart } = get();
-    const updatedCart = updateCart(product, quantity, cart)
-    set({ cart: updatedCart });
+    const uid = 0;
 
-    // db
-    addToCart(product.id, quantity);
+    addToCart(product.id, quantity).then(value => {
+      const updatedCart = updateCart(product, quantity, cart, value.uid)
+      set({ cart: updatedCart });
+    })
   },
   update: (product: Product, quantity: number) => {
     const { cart } = get();

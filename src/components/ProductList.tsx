@@ -9,7 +9,7 @@ export default function List({ products }: typeProducts) {
                 { isArrayEmpty(products) ?
                     <p>Loading...</p>
                     :
-                    products?.map((product: Product, index) => <ProductItem index={index} key={product.id} product={product} />)
+                    products?.map((product: Product, index) => <ProductItem key={product.id} index={index} product={product} />)
                 }
             </div>
         </section>

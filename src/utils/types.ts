@@ -1,6 +1,6 @@
 type Product = {
     id: number;
-    productId: number;
+    uid: number;
     title: string;
     description: string;
     price: number;
@@ -49,7 +49,7 @@ type Cart = {
 
 type CartItem = {
     id: number;
-    productId: number;
+    uid: number;
     count: number;
     title: string;
     description: string;

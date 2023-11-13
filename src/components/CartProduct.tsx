@@ -3,11 +3,11 @@ import { formatPrice } from '@/utils/Utils'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function CartProduct({ product, key }: { product: CartItem, key: number }) {
+export default function CartProduct({ product }: { product: CartItem }) {
     const { update: handleUpdateCart, remove: handleRemoveFromCart } = useCartStore();
 
     return (
-        <div className="flex justify-between" key={key}>
+        <div className="flex justify-between">
             <div className='flex gap'>
                 <Link href={'../detail/' + product.id}>
                     <Image src={product.image} priority alt={product.title} width={80} height={80}
@@ -24,7 +24,7 @@ export default function CartProduct({ product, key }: { product: CartItem, key: 
             </div>
             <div className='flex align-center gap'>
                 <input type="number" value={product.count} onChange={(e) => handleUpdateCart(product, Number(e.target.value))}/>
-                <button type='button' onClick={() => handleRemoveFromCart(product.productId, product.count)} aria-label={"Remove Product with id: " + product.id}>Remove</button>
+                <button type='button' onClick={() => handleRemoveFromCart(product.id, product.count, product.uid)} aria-label={"Remove Product with id: " + product.id}>Remove</button>
             </div>
         </div>
     )

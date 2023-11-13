@@ -3,9 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from '@/styles/ProductItem.module.css'
 
-export default function ProductItem({ product, index, key }: { product: Product, index: number, key: number }) {
+export default function ProductItem({ product, index }: { product: Product, index: number}) {
     return (
-        <Link href={'../detail/' + product.id} className={styles.Product} key={key}>
+        <Link href={'../detail/' + product.id} className={styles.Product}>
             <Image src={product.image} alt={product.title} priority={index < 3}
                 width={300} height={300} style={{ width: "auto", height: "auto" }}/>
 
