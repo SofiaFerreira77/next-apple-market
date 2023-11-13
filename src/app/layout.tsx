@@ -7,8 +7,8 @@ import Footer from '@/components/shared/Footer';
 const roboto = Roboto(
   {
     subsets: ['latin'],
-    style: ['normal', 'italic'],
-    weight: ['100','300','400','500','700','900'],
+    style: ['normal'],
+    weight: ['400','500'],
     display: 'swap'
   }
 )
@@ -22,7 +22,6 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-
   const developer = {
     label: 'Developed by:',
     name: 'Sofia Ferreira',
