@@ -22,7 +22,7 @@ export async function getCart(): Promise<Cart> {
     })
 }
 
-export async function getProducts(): Promise<CartProduct[]> {
+export async function getProducts(): Promise<CartItem[]> {
     return getJsonData({
         endPoint: `${BASE_URL}/products`,
     })
