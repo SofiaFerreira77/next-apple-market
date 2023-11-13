@@ -3,11 +3,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from '@/styles/ProductItem.module.css'
 
-export default function ProductItem({ product }: { product: Product }) {
+export default function ProductItem({ product, index, key }: { product: Product, index: number, key: number }) {
     return (
-        <Link href={'../detail/' + product.id} className={styles.Product}>
-            <Image src={product.image} alt={product.title}
-                width={300} height={300} style={{ width: "auto", height: "auto" }} loading="lazy" />
+        <Link href={'../detail/' + product.id} className={styles.Product} key={key}>
+            <Image src={product.image} alt={product.title} priority={index < 3}
+                width={300} height={300} style={{ width: "auto", height: "auto" }}/>
 
             <p className='ribbon-1'>{product.category}</p>
             <h3>{product.title}</h3>

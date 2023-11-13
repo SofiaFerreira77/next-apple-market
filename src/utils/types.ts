@@ -43,18 +43,23 @@ type SortingRules = [
 
 type Cart = {
     id: number;
-    products: CartProduct[];
+    products: CartItem[];
     totals: typeTotals;
 }
 
-type CartProduct = {
+type CartItem = {
     id: number;
     productId: number;
     count: number;
     title: string;
+    description: string;
     price: number;
     category: string;
     image: string;
+    rating: {
+        rate: number;
+        count: number;
+    }
 }
 
 type typeTotals = {
