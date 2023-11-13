@@ -2,8 +2,8 @@ import { getProductsCase } from '@/useCases/ProductUseCase';
 import Banner from '@/components/Banner'
 import List from '@/components/ProductList'
 
-export default function Home() {
-  const showFeaturedProducts = getProductsCase().then((products) => <List products={products} />);
+export default async function Home() {
+  const featuredProducts = await getProductsCase();
 
   return (
     <main className="Home">
@@ -13,7 +13,7 @@ export default function Home() {
         link="https://www.apple.com/business/"
         linkName='Learn about Apple at Work' />
 
-      { showFeaturedProducts }
+        { featuredProducts && <List products={featuredProducts} />}
     </main>
   )
 }

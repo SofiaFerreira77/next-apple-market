@@ -8,12 +8,12 @@ export function generateMetadata() {
   };
 }
 
-export default function ListPage() {
-  const showFeaturedProducts = getProductsCase().then((products) => <List products={products} />);
+export default async function ListPage() {
+  const featuredProducts = await getProductsCase();
   
   return (
     <>
-      {showFeaturedProducts}
+      { featuredProducts && <List products={featuredProducts} />}
     </>
   )
 }

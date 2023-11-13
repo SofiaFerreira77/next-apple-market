@@ -10,14 +10,13 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function CategoryPage({ params }) {
+export default async function CategoryPage({ params }) {
   const { category } = params;
-
-  const showFeaturedProducts = getProductsByCategoryCase(category).then((products) => <List products={products} />);
+  const categoryProducts = await getProductsByCategoryCase(category);
 
   return (
     <>
-      {showFeaturedProducts}
+      { categoryProducts && <List products={categoryProducts} />}
     </>
   )
 }
