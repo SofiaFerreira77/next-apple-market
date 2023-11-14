@@ -33,7 +33,7 @@ export default async function Detail({ params }: ProductProps) {
     <main className="Detail">
       <div className="container flex gap-1">
         <div style={{ width: "50%", padding: "10%", background: 'white', display: "sticky", top: "0"}}>
-          { product.image ? <Image src={product.image} priority width={100} height={100} style={{ width: "100%", height: 'auto'}} alt={product.title} /> : ''}
+          { product.image && <Image src={product.image} priority width={100} height={100} style={{ width: "100%", height: 'auto'}} alt={product.title} />}
         </div>
 
         <div className="flex flex-col gap" style={{ width: "50%"}}>

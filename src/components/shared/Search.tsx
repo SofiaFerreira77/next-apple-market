@@ -39,17 +39,12 @@ export default function Search() {
                 onClick={() => showInput()}
                 aria-label="Toggle Favorites"><SearchIcon /></button>
 
-            {inputVisible ?
-                <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder='Search Here' />
-                : ''
-            }
+            { inputVisible && <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder='Search Here' /> }
 
-            {inputVisible && searchTerm.length > 3 ?
+            { inputVisible && searchTerm.length > 3 &&
                 <div className={styles.SearchOverlay} onClick={() => hideOverlay()}>
                     <input ref={searchInput} type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder='Search Here' />
                 </div>
-                :
-                ''
             }
         </>
     )
