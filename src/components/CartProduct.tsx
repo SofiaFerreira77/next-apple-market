@@ -4,7 +4,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default function CartProduct({ product }: { product: CartItem }) {
-    const { update: handleUpdateCart, remove: handleRemoveFromCart } = useCartStore();
+    const { remove: handleRemoveFromCart } = useCartStore();
+
+    /* function handleUpdateCart (e) {
+        update(product, Number(e.target.value))
+    } */
 
     return (
         <div className="flex justify-between">
@@ -23,7 +27,8 @@ export default function CartProduct({ product }: { product: CartItem }) {
                 </div>
             </div>
             <div className='flex align-center gap'>
-                <input type="number" value={product.count} onChange={(e) => handleUpdateCart(product, Number(e.target.value))}/>
+                {/* <input disabled type="number" value={product.count} onChange={(e) => handleUpdateCart()}/> */}
+                <input disabled type="number" value={product.count} />
                 <button type='button' onClick={() => handleRemoveFromCart(product.id, product.count, product.uid)} aria-label={"Remove Product with id: " + product.id}>Remove</button>
             </div>
         </div>

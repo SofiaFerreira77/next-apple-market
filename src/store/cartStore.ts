@@ -15,10 +15,10 @@ const initialTaxes = {
 
 type CartStore = {
   cart: CartItem[],
+  count: number,
   totals,
-  count: () => number,
   add: (product: Product, quantity: number) => void,
-  update: (product: Product, quantity: number) => void,
+  // update: (product: Product, quantity: number) => void,
   remove: (productId: number, quantity: number, uid: number) => void,
   removeAll: () => void
 }
@@ -28,6 +28,7 @@ export const useCartStore = create<CartStore>()(
     persist(
       (set, get) => ({
         cart: [],
+        count: 0,
         totals: () => {
           const { cart } = get();
 
@@ -38,34 +39,37 @@ export const useCartStore = create<CartStore>()(
 
           return { subtotal, delivery, taxes, total }
         },
-        count: () => {
-          const { cart } = get();
-          if (cart.length) return cart.map(item => item.count).reduce((prev, curr) => prev + curr);
-          return 0;
-        },
         add: (product: Product, quantity: number) => {
-          const { cart } = get();
+          const { cart, count } = get();
 
+          // BE addToCart
           addToCart(product.id, quantity).then(value => {
             const updatedCart = updateCart(product, quantity, cart, value.uid)
             set({ cart: updatedCart });
+            set({ count: count + quantity });
           })
         },
-        update: (product: Product, quantity: number) => {
-          const { cart } = get();
-          const updatedCart = updateProductCount(product, quantity, cart, product.uid)
-          set({ cart: updatedCart });
+/*         update: (product: Product, quantity: number) => {
+          const { cart, count } = get();
 
-          // db
-          // addToCart(product.id, quantity);
-        },
+          // BE updateDBCart
+          const updatedCart = updateCart(product, quantity, cart, product.uid)
+          set({ cart: updatedCart });
+          set({ count: count + quantity });
+
+          cart.map(item => {
+            item.uid === product.uid && updateDBCart(product.id, quantity, product.uid)
+          });
+        }, */
         remove: (productId: number, quantity: number, uid: number) => {
-          const { cart } = get();
+          const { cart, count } = get();
+
           const updatedCart = removeCart(productId, quantity, cart);
           set({ cart: updatedCart });
+          set({ count: count - quantity });
 
-          // db
-          cart.map(item => {
+          // BE removeFromCart
+          cart?.map(item => {
             item.uid === uid && removeFromCart(uid)
           });
         },
@@ -92,21 +96,18 @@ function updateCart(product: Product, count: number, cart: CartItem[], uid: numb
   return cart;
 }
 
-function updateProductCount(product: Product, count: number, cart: CartItem[], uid: number): CartItem[] {
-
+/* function updateProductCount(product: Product, count: number, cart: CartItem[], uid: number): CartItem[] {
   return cart.map(item => {
     if (item.id === product.id)
-      return { ...item, count: count } as CartItem;
+      return { ...item, count, uid } as CartItem;
     return item
   })
+} */
 
-  // return cart;
-}
-
-function removeCart(productId: number, count: number, cart: CartItem[]): CartItem[] {
+function removeCart(productId: number, quantity: number, cart: CartItem[]): CartItem[] {
   return cart.map(item => {
     if (item.id === productId)
-      return { ...item, count: item.count - count }
+      return { ...item, count: item.count - quantity }
     return item;
   }).filter(item => {
     return item.count;
