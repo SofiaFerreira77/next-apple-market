@@ -2,7 +2,6 @@ import { addToCart, removeFromCart } from "@/repositories/CartFakeRepository";
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware'
 
-
 interface CartItem extends Product {
   count: number;
   uid: number;

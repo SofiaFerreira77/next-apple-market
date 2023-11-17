@@ -2,6 +2,7 @@ import Link from 'next/link'
 import styles from '@/styles/Header.module.css'
 import { Logo } from './Icons'
 import Search from './Search'
+import Authentication from '../Authentication'
 import BagComponent from '../BagComponent'
 
 export default function Header() {
@@ -22,6 +23,7 @@ export default function Header() {
 
                 <div className={styles.HeaderShopping}>
                     <Search />
+                    <Authentication />
                     <BagComponent />
                 </div>
             </div>

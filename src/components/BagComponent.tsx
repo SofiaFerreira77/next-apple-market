@@ -14,9 +14,11 @@ export default function BagComponent() {
     }, [count])
     
     return (
-        <Link href="../cart">
+        <Link href="../cart" style={{position: 'relative'}}>
             <Bag />
-            { counter }
+            <div style={{position: 'absolute', bottom: '-5px', right: '-18px', minWidth: '25px', textAlign: 'center', backgroundColor: 'red', color: '#fff', padding: '2px', borderRadius: '100%' }}>
+                { counter }
+            </div>
         </Link>
     )
 }
